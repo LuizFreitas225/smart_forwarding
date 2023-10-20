@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  postgres-compose:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "atech"
+    ports:
+      - "15432:5432"
