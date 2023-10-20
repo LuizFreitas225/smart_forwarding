@@ -37,6 +37,4 @@ public class Process {
 
     private final Double latitude;
     private final Double longitude;
-
-
 }
