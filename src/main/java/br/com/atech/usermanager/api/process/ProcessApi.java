@@ -1,6 +1,7 @@
 package br.com.atech.usermanager.api.process;
 
 import br.com.atech.usermanager.dto.process.ProcessCreateDTO;
+import br.com.atech.usermanager.dto.process.ProcessDTO;
 import br.com.atech.usermanager.model.process.Process;
 import br.com.atech.usermanager.service.process.ProcessService;
 import br.com.atech.usermanager.service.user.UserService;
@@ -14,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RestController
@@ -40,7 +43,7 @@ public class ProcessApi {
 
 
     @GetMapping
-    public Page<Process> search(
+    public List<ProcessDTO> search(
             @RequestParam(value = "page", required = false) final Integer page,
             @RequestParam(value = "size", required = false) final Integer size,
             @RequestParam(value = "sort", required = false) final String sort,
@@ -49,8 +52,8 @@ public class ProcessApi {
     ) {
 
         log.info("UserController.search - start - input  [{},{},{},{}]", page, size, sort, searchTerm);
-
-        return processService.findAByNameOrEmailOrUserName(PaginationUtil.configuringPageable(page, size, sort, orderBy), searchTerm, userService.getUserAuthenticated().getEmail());
+        Page<Process> pageReturn = processService.findAByNameOrEmailOrUserName(PaginationUtil.configuringPageable(page, size, sort, orderBy), searchTerm, userService.getUserAuthenticated().getEmail());
+        return pageReturn.stream().map( value -> modelMapper.map(value, ProcessDTO.class)).collect(Collectors.toList());
     }
 
 

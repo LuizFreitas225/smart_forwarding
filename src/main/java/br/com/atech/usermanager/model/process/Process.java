@@ -5,6 +5,7 @@ import br.com.atech.usermanager.model.user.Status;
 import br.com.atech.usermanager.model.user.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "process")
 @Data
+@NoArgsConstructor
 public class Process {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +37,6 @@ public class Process {
     @ManyToOne
     private User owner;
 
-    private final Double latitude;
-    private final Double longitude;
+    private  Double latitude ;
+    private  Double longitude;
 }
