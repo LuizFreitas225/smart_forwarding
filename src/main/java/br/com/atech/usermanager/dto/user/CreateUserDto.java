@@ -1,7 +1,8 @@
-package br.com.atech.usermanager.dto;
+package br.com.atech.usermanager.dto.user;
 
 import br.com.atech.usermanager.constant.ErrorMessage;
-import br.com.atech.usermanager.model.Status;
+import br.com.atech.usermanager.model.user.Profile;
+import br.com.atech.usermanager.model.user.Status;
 import lombok.Data;
 
 import javax.persistence.EnumType;
@@ -11,9 +12,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class EditUserDto {
-    @NotNull(message =  ErrorMessage.ID_IS_MANDATORY)
-    private Long id;
+public class CreateUserDto {
     @NotBlank(message = ErrorMessage.NAME_IS_MANDATORY)
     private String name;
     @NotBlank(message = ErrorMessage.EMAIL_IS_MANDATORY)
@@ -26,4 +25,7 @@ public class EditUserDto {
     @NotNull(message = ErrorMessage.STATUS_IS_MANDATORY)
     @Enumerated(EnumType.ORDINAL)
     private Status status;
+    @NotNull(message = ErrorMessage.PROFILE_IS_MANDATORY)
+    @Enumerated(EnumType.ORDINAL)
+    private Profile profile;
 }

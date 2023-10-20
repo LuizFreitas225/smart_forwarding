@@ -4,10 +4,10 @@
 //import br.com.atech.usermanager.exception.ShortPasswordException;
 //import br.com.atech.usermanager.exception.UserIsDeletedException;
 //import br.com.atech.usermanager.exception.UserIsInactiveException;
-//import br.com.atech.usermanager.model.Status;
-//import br.com.atech.usermanager.model.User;
-//import br.com.atech.usermanager.repository.UserRepository;
-//import br.com.atech.usermanager.service.UserService;
+//import br.com.atech.usermanager.model.user.Status;
+//import br.com.atech.usermanager.model.user.User;
+//import br.com.atech.usermanager.repository.user.UserRepository;
+//import br.com.atech.usermanager.service.user.UserService;
 //import br.com.atech.usermanager.util.PaginationUtil;
 //import org.assertj.core.api.Assertions;
 //import org.junit.jupiter.api.BeforeEach;

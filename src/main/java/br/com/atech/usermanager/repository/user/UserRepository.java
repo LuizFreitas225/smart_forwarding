@@ -1,6 +1,6 @@
-package br.com.atech.usermanager.repository;
+package br.com.atech.usermanager.repository.user;
 
-import br.com.atech.usermanager.model.User;
+import br.com.atech.usermanager.model.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;

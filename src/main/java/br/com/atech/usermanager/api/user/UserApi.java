@@ -1,10 +1,10 @@
-package br.com.atech.usermanager.api;
+package br.com.atech.usermanager.api.user;
 
-import br.com.atech.usermanager.dto.CreateUserDto;
-import br.com.atech.usermanager.dto.EditUserDto;
-import br.com.atech.usermanager.dto.UserProfileDto;
-import br.com.atech.usermanager.model.User;
-import br.com.atech.usermanager.service.UserService;
+import br.com.atech.usermanager.dto.user.CreateUserDto;
+import br.com.atech.usermanager.dto.user.EditUserDto;
+import br.com.atech.usermanager.dto.user.UserProfileDto;
+import br.com.atech.usermanager.model.user.User;
+import br.com.atech.usermanager.service.user.UserService;
 import br.com.atech.usermanager.util.PaginationUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -43,6 +43,14 @@ public class UserApi {
         log.info("UserController.create - end - outPut  [{}]", userCreated.getId());
         return new ResponseEntity<>(modelMapper.map(userCreated, UserProfileDto.class), HttpStatus.CREATED);
     }
+
+    @GetMapping("/authenticated")
+    public ResponseEntity<UserProfileDto> getUserAuthenticated() {
+        log.info("UserController.getUserauthenticated - start - input  [{}]");
+        return new ResponseEntity<>(modelMapper.map(userService.getUserAuthenticated(), UserProfileDto.class), HttpStatus.OK);
+
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<UserProfileDto> getUserProfileById(@PathVariable(value = "id") long id) {
         log.info("UserController.getUserProfileById - start - input  [{}]", id);

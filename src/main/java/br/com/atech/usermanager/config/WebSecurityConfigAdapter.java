@@ -2,7 +2,7 @@ package br.com.atech.usermanager.config;
 
 import br.com.atech.usermanager.dto.security.UserCustomDTO;
 
-import br.com.atech.usermanager.service.UserService;
+import br.com.atech.usermanager.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

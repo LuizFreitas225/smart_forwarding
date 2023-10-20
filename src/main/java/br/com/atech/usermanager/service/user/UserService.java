@@ -1,18 +1,21 @@
-package br.com.atech.usermanager.service;
+package br.com.atech.usermanager.service.user;
 
 import br.com.atech.usermanager.exception.EmailInUseException;
 import br.com.atech.usermanager.exception.ShortPasswordException;
 import br.com.atech.usermanager.exception.UserIsDeletedException;
 import br.com.atech.usermanager.exception.UserIsInactiveException;
 import br.com.atech.usermanager.exception.UserNotFoundException;
-import br.com.atech.usermanager.model.Status;
-import br.com.atech.usermanager.model.User;
-import br.com.atech.usermanager.repository.UserRepository;
+import br.com.atech.usermanager.model.user.Status;
+import br.com.atech.usermanager.model.user.User;
+import br.com.atech.usermanager.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -85,6 +88,15 @@ public class UserService {
         }
         return user;
     }
+
+    public User getUserAuthenticated() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        String username = userDetails.getUsername();
+        return findValidUserByEmail(username);
+    }
+
+
 
     public void validateCreateUser(User user) {
         log.info("UserService.validateUser - start - input [{}]", user.getEmail());

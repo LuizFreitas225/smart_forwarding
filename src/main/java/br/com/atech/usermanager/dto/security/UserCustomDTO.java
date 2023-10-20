@@ -1,5 +1,6 @@
 package br.com.atech.usermanager.dto.security;
 
+import br.com.atech.usermanager.model.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -10,7 +11,7 @@ public class UserCustomDTO implements UserDetails {
     private String login;
     private String password;
 
-    public UserCustomDTO(br.com.atech.usermanager.model.User user) {
+    public UserCustomDTO(User user) {
         this.login = user.getEmail();
         this.password = user.getPassword();
     }

@@ -1,7 +1,7 @@
 package br.com.atech.usermanager.user;
 
-import br.com.atech.usermanager.model.Status;
-import br.com.atech.usermanager.model.User;
+import br.com.atech.usermanager.model.user.Status;
+import br.com.atech.usermanager.model.user.User;
 
 import java.time.LocalDateTime;
 

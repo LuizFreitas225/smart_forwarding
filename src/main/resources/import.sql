@@ -1,0 +1,1 @@
+INSERT INTO public.users(id, create_date, email, last_modified_date, "name", "password", profile, status, user_name) VALUES(1, '2023-10-19 23:49:47.483', 'luiz@atech.com.br', '2023-10-19 23:49:47.483', 'Luiz Nicolauu', '$2a$10$cnA4aH9OeeZXIhxCSfK0YOOD0vYtU60P/7sBFfHbOrXeFPkSKzJce', 'ADMIN', 'ACTIVE', 'Luiz225');
