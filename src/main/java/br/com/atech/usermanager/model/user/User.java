@@ -1,7 +1,5 @@
 package br.com.atech.usermanager.model.user;
 
-
-import br.com.atech.usermanager.model.process.Process;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
@@ -39,6 +37,4 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Profile profile;
 
-    @OneToMany
-    private List<Process> Process;
 }
