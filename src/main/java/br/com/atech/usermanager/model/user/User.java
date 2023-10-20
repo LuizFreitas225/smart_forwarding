@@ -43,7 +43,7 @@ public class User {
     private RegionalAgencyNaturatins regionalAgencyNaturatins;
 
     @OneToMany
-    private List<Process> processes;
+    private List<Process> approvalProcesses;
 
 
 

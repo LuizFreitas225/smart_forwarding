@@ -3,6 +3,8 @@ package br.com.atech.usermanager.api.process;
 import br.com.atech.usermanager.dto.process.ProcessCreateDTO;
 import br.com.atech.usermanager.dto.process.ProcessDTO;
 import br.com.atech.usermanager.model.process.Process;
+import br.com.atech.usermanager.model.process.StatusInspectionRequest;
+import br.com.atech.usermanager.model.user.User;
 import br.com.atech.usermanager.service.process.ProcessService;
 import br.com.atech.usermanager.service.user.UserService;
 import br.com.atech.usermanager.util.PaginationUtil;
@@ -54,6 +56,18 @@ public class ProcessApi {
         log.info("UserController.search - start - input  [{},{},{},{}]", page, size, sort, searchTerm);
         Page<Process> pageReturn = processService.findAByNameOrEmailOrUserName(PaginationUtil.configuringPageable(page, size, sort, orderBy), searchTerm, userService.getUserAuthenticated().getEmail());
         return pageReturn.stream().map( value -> modelMapper.map(value, ProcessDTO.class)).collect(Collectors.toList());
+    }
+
+    @PostMapping("/{processId}/user/")
+    public void inspectionRequest(@PathVariable(value = "processId")  Long processId,  Long userId) {
+      Process process = processService.findAndValidateById(processId);
+      User user = userService.getUserAuthenticated();
+
+        process.setStatusInspectionRequest(StatusInspectionRequest.QUESTED);
+        Process saveProcess = processService.update(process);
+        user.getApprovalProcesses().add(process);
+        userService.update(user);
+
     }
 
 

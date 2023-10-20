@@ -13,7 +13,6 @@ import java.util.List;
 @Repository
 public interface ProcessRepository extends JpaRepository<Process, Long> {
     List<Process> findByOwnerEmail(String email);
-
     @Query(value = " SELECT p FROM Process p "
             + " WHERE LOWER (p.name ) LIKE %:searchTerm% "
             + " AND LOWER (p.owner.email) LIKE %:email% ")

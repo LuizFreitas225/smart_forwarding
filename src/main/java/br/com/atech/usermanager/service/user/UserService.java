@@ -4,7 +4,7 @@ import br.com.atech.usermanager.exception.EmailInUseException;
 import br.com.atech.usermanager.exception.ShortPasswordException;
 import br.com.atech.usermanager.exception.UserIsDeletedException;
 import br.com.atech.usermanager.exception.UserIsInactiveException;
-import br.com.atech.usermanager.exception.UserNotFoundException;
+import br.com.atech.usermanager.exception.NotFoundException;
 import br.com.atech.usermanager.model.user.Status;
 import br.com.atech.usermanager.model.user.User;
 import br.com.atech.usermanager.repository.user.UserRepository;
@@ -42,7 +42,7 @@ public class UserService {
         log.info("UserService.findAndValidateById - start - input [{}]", id);
 
         User userFound = userRepository.findById(id)
-                .orElseThrow(() -> new UserNotFoundException());
+                .orElseThrow(() -> new NotFoundException());
 
         log.info("UserService.findAndValidateById - end - output [{}]", userFound.getId());
         return userFound;
