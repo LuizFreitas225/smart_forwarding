@@ -1,5 +1,7 @@
 package br.com.atech.usermanager.model.user;
 
+import br.com.atech.usermanager.model.process.Process;
+import br.com.atech.usermanager.model.regional.RegionalAgencyNaturatins;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.CreatedDate;
@@ -36,5 +38,13 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     private Profile profile;
+
+    @Enumerated(EnumType.STRING)
+    private RegionalAgencyNaturatins regionalAgencyNaturatins;
+
+    @OneToMany
+    private List<Process> processes;
+
+
 
 }

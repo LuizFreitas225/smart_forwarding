@@ -8,8 +8,11 @@ public final class ErrorMessage {
     public  static final String USER_NAME_IS_MANDATORY = "User Name is mandatory";
     public  static final String STATUS_IS_MANDATORY = "Status is mandatory";
     public  static final String PROFILE_IS_MANDATORY = "Profile is mandatory";
+    public  static final String LATITUDE_IS_MANDATORY = "Latitude is mandatory";
+    public  static final String LONGITUDE_IS_MANDATORY = "Longitude is mandatory";
+    public  static final String REGIONAL_AGENCY_IS_MANDATORY = "Regional Agency is mandatory";
     public static final String ID_IS_MANDATORY = "Id is mandatory";
-   // public static final String OWNNER_ID_IS_MANDATORY = "Id is mandatory";
+   public static final String OWNER_ID_IS_MANDATORY = "Owner Id is mandatory";
 
     public static final String VALID_EMAIL_IS_REQUIRED = "A valid email is required";
     public static final String EMAIL_IN_USE = "Email in use";
